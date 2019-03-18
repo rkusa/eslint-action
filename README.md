@@ -4,6 +4,8 @@ This Action runs [ESLint](https://github.com/eslint/eslint) on your codebase and
 
 Annotaiton Example: https://github.com/rkusa/eslint-action-example/pull/1/files
 
+![Annotation Example](screenshot.png)
+
 ## Usage
 
 ```hcl
