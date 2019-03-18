@@ -16,10 +16,10 @@ LABEL repository="https://github.com/rkusa/eslint-action"
 LABEL homepage="https://github.com/rkusa/eslint-action"
 LABEL maintainer="Markus Ast <m@rkusa.st>"
 
-LABEL com.github.actions.name="ESLint"
-LABEL com.github.actions.description="Execute ESLint and add issue annotations"
+LABEL com.github.actions.name="Annotated ESLint"
+LABEL com.github.actions.description="Execute ESLint and add linting error annotations"
 LABEL com.github.actions.icon="octagon"
-LABEL com.github.actions.color="#463fd4"
+LABEL com.github.actions.color="blue"
 
 ENV ESLINT_CMD ./node_modules/.bin/eslint
 COPY entrypoint.sh /entrypoint.sh
