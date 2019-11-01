@@ -36,16 +36,20 @@ func main() {
 	ctx := context.Background()
 	action := ghactions.NewAction(ctx)
 
-	action.OnPush(func(client *github.Client, event *github.PushEvent) error {
-		return handlePush(ctx, client, event, report)
-	})
+	action.
+		OnPush(func(client *github.Client, event *github.PushEvent) error {
+			return lint(ctx, client, report)
+		}).
+		OnPullRequest(func(client *github.Client, event *github.PullRequestEvent) error {
+			return lint(ctx, client, report)
+		})
 
 	if err := action.Run(); err != nil {
 		log.Fatal(err)
 	}
 }
 
-func handlePush(ctx context.Context, client *github.Client, event *github.PushEvent, report []*File) error {
+func lint(ctx context.Context, client *github.Client, report []*File) error {
 	head := os.Getenv(ghactions.GithubSha)
 	owner, repoName := ghactions.GetRepoInfo()
 
@@ -130,7 +134,7 @@ func handlePush(ctx context.Context, client *github.Client, event *github.PushEv
 
 	if errorCount > 0 {
 		return fmt.Errorf(summary)
-	} else {
-		return nil
 	}
+
+	return nil
 }
