@@ -1,3 +1,7 @@
+Does not work with the release version of Github actions anymore, use [Problem Matchers](https://github.com/actions/toolkit/blob/master/docs/commands.md#problem-matchers) instead.
+
+---
+
 # Github Action for ESLint (with Annotations)
 
 This Action runs [ESLint](https://github.com/eslint/eslint) on your codebase and adds annotations to the Github check the action is run in.
